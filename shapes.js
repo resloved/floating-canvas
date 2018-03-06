@@ -41,15 +41,14 @@ class Shape {
 
     draw(ctx, width, height) {
 
-        var segment = 20;
-        var gap     = 50;
+        var gap = 30;
+        var seg = 10;
 
         // Relative
         var xR = this.x*width  + this.distX*this.pct*width;
         var yR = this.y*height + this.distY*this.pct*height;
 
-        this.contents(ctx, xR, yR, segment, gap);
-
+        this.contents(ctx, xR, yR, seg, gap);
         this.update();
 
     }
@@ -64,33 +63,40 @@ class Triangle extends Shape {
 
     contents(ctx, x, y, seg, gap) {
 
-        ctx.fillStyle = "#E2E2E2";
+        x -= gap/2;
+        y += seg*3/2;
 
+        var h  = (gap+seg)/2*Math.sqrt(3);
+        var hs = seg/2*Math.sqrt(3);
+
+        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.moveTo(x,             y);
         ctx.lineTo(x+gap,         y);
-        ctx.lineTo(x+gap+seg/2,   y-seg);
-        ctx.lineTo(x+gap/2+seg/2, y-gap-seg);
-        ctx.lineTo(x+gap/2-seg/2, y-gap-seg);
-        ctx.lineTo(x-seg/2,       y-seg);
+        ctx.lineTo(x+gap+seg/2,   y-hs);
+        ctx.lineTo(x+gap/2+seg/2, y-h);
+        ctx.lineTo(x+gap/2-seg/2, y-h);
+        ctx.lineTo(x-seg/2,       y-hs);
         ctx.closePath();
         ctx.fill();
 
+        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
-        ctx.arc(x-seg/4+4, y-seg/2-2, seg/2+2, 0, 2*Math.PI);
+        ctx.arc(x-seg/8, y-seg/2, seg/2, 0, Math.PI*2);
         ctx.closePath();
         ctx.fill();
 
+        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
-        ctx.arc(x+gap+1, y-seg/2-2, seg/2+2, 0, 2*Math.PI);
+        ctx.arc(x+gap+seg/8, y-seg/2, seg/2, 0, Math.PI*2);
         ctx.closePath();
         ctx.fill();
 
+        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
-        ctx.arc(x+gap/2, y-gap-seg+8, seg/2+2, 0, 2*Math.PI);
+        ctx.arc(x+gap/2, y-h+seg/8, seg/2, 0, Math.PI*2);
         ctx.closePath();
         ctx.fill();
-
     }
 
 }
@@ -137,6 +143,7 @@ class Square extends Shape {
         ctx.arc(x+gap, y-seg, seg, 0, 2*Math.PI);
         ctx.closePath();
         ctx.fill();
+
     }
 
 }

@@ -10,7 +10,7 @@ var requestAnimationFrame = window.requestAnimationFrame ||
 var shapes = new Array();
 var amt = 4;
 for (var i = 1; i <= amt; i++) {
-    shapes.push(new Triangle(0.2*i-0.025, 0.45, 0, 0.2, 5000, 1/amt*i+0.8));
+    shapes.push(new Triangle(0.2*i, 0.45, 0, 0.2, 5000, 1/amt*i+0.8));
 }
 
 shapes.push(new Square(0.4, 0.2, 0, 0.2, 5000, 0));
