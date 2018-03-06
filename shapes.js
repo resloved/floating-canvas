@@ -41,12 +41,12 @@ class Shape {
 
     draw(ctx, width, height) {
 
-        var gap = 30;
-        var seg = 10;
+        var gap = 60;
+        var seg = 20;
 
         // Relative
         var xR = this.x*width  + this.distX*this.pct*width;
-        var yR = this.y*height + this.distY*this.pct*height;
+        var yR = this.y + this.distY*this.pct;
 
         this.contents(ctx, xR, yR, seg, gap);
         this.update();
@@ -158,7 +158,7 @@ class Circle extends Shape {
 
         ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
-        ctx.arc(x, y, gap-seg, 0, Math.PI*2); 
+        ctx.arc(x, y, gap/2+seg/2, 0, Math.PI*2); 
         ctx.closePath();
         ctx.fill();
 
