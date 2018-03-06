@@ -41,13 +41,14 @@ class Shape {
 
     draw(ctx, width, height) {
 
-        var gap = 60;
-        var seg = 20;
+        var gap = width/10;
+        var seg = width/100;
 
         // Relative
         var xR = this.x*width  + this.distX*this.pct*width;
         var yR = this.y + this.distY*this.pct;
 
+        ctx.fillStyle = "#E2E2E2";
         this.contents(ctx, xR, yR, seg, gap);
         this.update();
 
@@ -69,7 +70,6 @@ class Triangle extends Shape {
         var h  = (gap+seg)/2*Math.sqrt(3);
         var hs = seg/2*Math.sqrt(3);
 
-        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.moveTo(x,             y);
         ctx.lineTo(x+gap,         y);
@@ -80,19 +80,16 @@ class Triangle extends Shape {
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.arc(x-seg/8, y-seg/2, seg/2, 0, Math.PI*2);
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.arc(x+gap+seg/8, y-seg/2, seg/2, 0, Math.PI*2);
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.arc(x+gap/2, y-h+seg/8, seg/2, 0, Math.PI*2);
         ctx.closePath();
@@ -111,7 +108,6 @@ class Square extends Shape {
 
         gap -= seg;
 
-        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.moveTo(x,         y);
         ctx.lineTo(x+gap,     y);
@@ -156,7 +152,6 @@ class Circle extends Shape {
 
     contents(ctx, x, y, seg, gap) {
 
-        ctx.fillStyle = "#E2E2E2";
         ctx.beginPath();
         ctx.arc(x, y, gap/2+seg/2, 0, Math.PI*2); 
         ctx.closePath();
