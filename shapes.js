@@ -11,11 +11,6 @@ class Shape {
         this.last = Date.now() + this.len * pct; 
         this.direction  = true;
 
-        this.rot   = rotation;
-        this.lenR  = lengthR;
-        this.lastR = Date.now() + this.len * pctR; 
-        this.directionR = true;
-
     }
 
     hover() {
